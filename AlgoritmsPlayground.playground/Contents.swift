@@ -132,4 +132,62 @@ func isPalindrome(_ s: String) -> Bool {
 }
 
 
-// MARK: - 226. Invert Binary Tree (5)
+// MARK: - 226. Invert Binary Tree (6)
+
+
+// MARK: - 242. Valid Anagram (7)
+
+/**
+ Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+ An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+ 
+ ## Notes: ##
+ 1. O(n log n + m log m)
+ 2. https://leetcode.com/problems/valid-palindrome/submissions/1337319679/
+ 
+ ## Example ##
+ ```
+ isAnagram("alfdjaldk", "adljflakjlf")
+ ```
+ */
+func isAnagram(_ s: String, _ t: String) -> Bool {
+    s.sorted() == t.sorted()
+}
+
+isAnagram("alfdjaldk", "adljflakjlf")
+
+
+// MARK: - 704. Binary Search (8)
+
+/**
+ Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+ You must write an algorithm with O(log n) runtime complexity.
+ 
+ ## Notes: ##
+ 1. O(log n)
+ 2. https://leetcode.com/problems/binary-search/description/
+ 
+ ## Example ##
+ ```
+ search([-1,0,3,5,9,12], 9)
+ ```
+ */
+func search(_ nums: [Int], _ target: Int) -> Int {
+    var low = 0
+    var high = nums.count - 1
+    
+    while low <= high {
+        let mid = (low + high) / 2
+        let guess = nums[mid]
+        if guess == target {
+            return mid
+        }
+        if guess > target {
+            high = mid - 1
+        } else {
+            low = mid + 1
+        }
+    }
+    return -1
+}
